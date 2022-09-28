@@ -1,0 +1,32 @@
+# Interval Partition
+# 【x,y,z,'n'】 
+# x-(int)room；y-start；z-end；n-str（name）
+G=[[1,9,10.5,'a'],[2,9,12.5,'b'],[3,9,10.5,'c'],[3,11,12.5,'d'],[4,11,14,'e'],[1,13,14.5,'f'],[3,13,14.5,'g'],[2,14,16.5,'h'],[1,15,16.5,'i'],[2,15,16.5,'j']]
+G.sort(key=lambda x:(x[1]))
+room_1=[]
+room_2=[]
+room_3=[]
+room_4=[]
+min=G[0]
+room_1.append(min)
+for i in range(1,len(G)):
+    if(G[i][1]<min[2]):
+        if(len(room_2)==0):
+            room_2.append(G[i])
+        elif(len(room_3)==0):
+            room_3.append(G[i])
+        elif(len(room_4)==0):
+            room_4.append(G[i])
+    else:
+        if(G[i][1]>=room_1[-1][2]):
+            room_1.append(G[i])
+        elif(G[i][1]>=room_2[-1][2]):
+            room_2.append(G[i])
+        elif(G[i][1]>=room_3[-1][2]):
+            room_3.append(G[i])
+        elif(G[i][1]>=room_4[-1][2]):
+            room_4.append(G[i])
+print("room_1:",room_1)
+print("room_2:",room_2)
+print("room_3:",room_3)
+print("room_4:",room_4)
